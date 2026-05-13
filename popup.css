@@ -1,0 +1,453 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 720px;
+  max-width: 720px;
+
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.22), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.14), transparent 32%),
+    #0b1120;
+
+  color: #f8fafc;
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+.container {
+  padding: 18px;
+}
+
+h1 {
+  margin: 0 0 16px;
+
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.top-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin-bottom: 12px;
+}
+
+button {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+
+  padding: 8px 12px;
+
+  background: rgba(37, 99, 235, 0.9);
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.22);
+
+  transition:
+    transform 0.15s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  background: #1d4ed8;
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+#statusText {
+  margin-bottom: 10px;
+
+  color: #cbd5e1;
+  font-size: 13px;
+}
+
+#refreshQueue {
+  margin-bottom: 12px;
+
+  color: #93c5fd;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+#searchInput {
+  width: 100%;
+  margin-bottom: 14px;
+  padding: 11px 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+
+  outline: none;
+
+  background: rgba(255, 255, 255, 0.09);
+  color: #f8fafc;
+
+  font-size: 14px;
+
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+#searchInput:focus {
+  border-color: rgba(96, 165, 250, 0.75);
+  box-shadow:
+    0 0 0 3px rgba(96, 165, 250, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+#searchInput::placeholder {
+  color: #94a3b8;
+}
+
+#accountsList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+.account-card {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+
+  padding: 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 18px;
+
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.035)),
+    rgba(15, 23, 42, 0.72);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.account-card:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(96, 165, 250, 0.34);
+
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(96, 165, 250, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.account-card.low-credit {
+  border-color: rgba(249, 115, 22, 0.8);
+
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(249, 115, 22, 0.28),
+    0 0 20px rgba(249, 115, 22, 0.14);
+}
+
+.account-number {
+  display: inline-flex;
+  align-items: center;
+
+  margin-bottom: 8px;
+  padding: 3px 8px;
+
+  border-radius: 999px;
+
+  background: rgba(59, 130, 246, 0.18);
+  color: #bfdbfe;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  border: 1px solid rgba(147, 197, 253, 0.22);
+}
+
+.account-email {
+  margin-bottom: 10px;
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  line-height: 1.25;
+
+  word-break: break-word;
+}
+
+.credit-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin-bottom: 7px;
+
+  color: #e2e8f0;
+
+  font-size: 12px;
+}
+
+.credit-row span {
+  min-width: 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.credit-bar {
+  position: relative;
+
+  width: 100%;
+  height: 12px;
+
+  overflow: hidden;
+  border-radius: 999px;
+
+  background: linear-gradient(90deg, #22c55e, #86efac);
+
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.35),
+    0 4px 12px rgba(0, 0, 0, 0.16);
+}
+
+.credit-used {
+  height: 100%;
+
+  border-radius: 999px 0 0 999px;
+
+  background: linear-gradient(90deg, #ef4444, #f97316, #facc15);
+
+  transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.credit-left {
+  display: none;
+}
+
+.credit-bar-label {
+  display: none;
+}
+
+.credit-percent {
+  display: block;
+  margin-top: 5px;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.account-status,
+.account-updated,
+.session-age {
+  margin-top: 5px;
+
+  color: #cbd5e1;
+
+  font-size: 12px;
+}
+
+.account-refresh-status {
+  margin-top: 8px;
+
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.account-refresh-status.success {
+  color: #4ade80;
+}
+
+.account-refresh-status.failed,
+.account-refresh-status.expired {
+  color: #fb7185;
+}
+
+.account-refresh-status.refreshing,
+.account-refresh-status.reconnecting,
+.account-refresh-status.imported {
+  color: #facc15;
+}
+
+.account-error,
+.expired-warning {
+  margin-top: 8px;
+  padding: 8px;
+
+  border-radius: 10px;
+
+  background: rgba(127, 29, 29, 0.55);
+  color: #fecaca;
+
+  font-size: 12px;
+
+  border: 1px solid rgba(248, 113, 113, 0.22);
+
+  word-break: break-word;
+}
+
+.remove-btn,
+.reconnect-btn {
+  margin-top: 10px;
+  margin-right: 6px;
+
+  padding: 6px 10px;
+
+  border-radius: 9px;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  box-shadow: none;
+}
+
+.remove-btn {
+  margin-top: 10px;
+
+  padding: 4px 8px;
+
+  border-radius: 7px;
+
+  background: rgba(239, 68, 68, 0.18);
+  color: #fecaca;
+
+  border: 1px solid rgba(248, 113, 113, 0.35);
+
+  font-size: 11px;
+  font-weight: 800;
+
+  box-shadow: none;
+}
+
+.remove-btn:hover {
+  background: rgba(239, 68, 68, 0.32);
+}
+
+.reconnect-btn {
+  background: rgba(245, 158, 11, 0.95);
+}
+
+.reconnect-btn:hover {
+  background: #d97706;
+}
+
+.account-updated {
+  margin-top: 6px;
+
+  color: #e2e8f0;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.account-updated-exact {
+  margin-top: 2px;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+}
+
+.visual-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-top: 10px;
+
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 999px;
+
+  background: #94a3b8;
+}
+
+.visual-status.success {
+  color: #4ade80;
+}
+
+.visual-status.success .status-dot {
+  background: #22c55e;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.65);
+}
+
+.visual-status.refreshing,
+.visual-status.reconnecting,
+.visual-status.imported {
+  color: #facc15;
+}
+
+.visual-status.refreshing .status-dot,
+.visual-status.reconnecting .status-dot,
+.visual-status.imported .status-dot {
+  background: #facc15;
+  box-shadow: 0 0 10px rgba(250, 204, 21, 0.65);
+}
+
+.visual-status.failed,
+.visual-status.expired {
+  color: #fb7185;
+}
+
+.visual-status.failed .status-dot,
+.visual-status.expired .status-dot {
+  background: #ef4444;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.65);
+}
+
+.account-details {
+  margin-top: 8px;
+}
+
+.account-details summary {
+  cursor: pointer;
+
+  color: #93c5fd;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  user-select: none;
+}
+
+.account-details summary:hover {
+  color: #bfdbfe;
+}

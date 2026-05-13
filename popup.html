@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Magnific Credit Dashboard</title>
+
+  <link rel="stylesheet" href="popup.css" />
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Magnific Credit Dashboard</h1>
+
+    <div class="top-buttons">
+      <button id="addAccountBtn">Add Account</button>
+      <button id="refreshBtn">Refresh</button>
+      <button id="exportBtn">Export</button>
+      <button id="importBtn">Import</button>
+      <input id="importFile" type="file" accept=".json" hidden />
+    </div>
+
+    <div id="statusText">
+      Ready
+    </div>
+    <div id="refreshQueue"></div>
+    <input
+  id="searchInput"
+  type="text"
+  placeholder="Search account..."
+/>
+
+    <div id="accountsList">
+
+      <!-- Accounts will appear here -->
+
+    </div>
+
+  </div>
+
+  <script src="popup.js"></script>
+
+</body>
+</html>

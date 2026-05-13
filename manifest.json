@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Credit Dashboard",
+  "version": "0.1.0",
+  "description": "Dashboard for checking Magnific and Freepik account credits.",
+  "permissions": [
+    "storage",
+    "cookies",
+    "alarms",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://*.magnific.com/*",
+    "https://magnific.com/*",
+    "https://*.freepik.com/*",
+    "https://freepik.com/*"
+  ],
+  "action": {
+    "default_title": "Credit Dashboard",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
